@@ -62,7 +62,7 @@ and is wrapped around the whole page content, except for the footer in this exam
 <br>
  
  
-  <form class="form-horizontal" action=" " method="post"  id="reg_form">
+  <form class="form-horizontal" action="signup.php" method="POST"  id="reg_form">
     <fieldset>
       
       <!-- Form Name -->
@@ -90,6 +90,21 @@ and is wrapped around the whole page content, except for the footer in this exam
         </div>
       </div>
       
+
+      <!--GENDER-->
+      <div class="form-group">
+              <label class="col-md-4 control-label">Gender</label>
+              <div class="col-md-6 selectContainer">
+                <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                  <select name="gender" class="form-control selectpicker" >
+                    <option value=" " >Please select your Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Male">Female</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+              </div>
+      </div>
     
       <!-- Text input-->
       
@@ -104,6 +119,7 @@ and is wrapped around the whole page content, except for the footer in this exam
       
       <!-- Text input-->
       
+      
       <div class="form-group">
         <label class="col-md-4 control-label">Address</label>
         <div class="col-md-6  inputGroupContainer">
@@ -111,9 +127,9 @@ and is wrapped around the whole page content, except for the footer in this exam
             <input name="address" placeholder="Address" class="form-control" type="text">
           </div>
         </div>
-      </div>
+      </div> 
       
-      <!-- Text input-->
+      <!-- CITY SELECTION-->
       
       <div class="form-group">
         <label class="col-md-4 control-label">City</label>
@@ -124,71 +140,113 @@ and is wrapped around the whole page content, except for the footer in this exam
         </div>
       </div>
       
-      <!-- Select Basic -->
+      <!-- STATE SELECTION -->
       
       <div class="form-group">
-        <label class="col-md-4 control-label">State</label>
+        <label class="col-md-4 control-label">State(Write N/A if not applicable)</label>
         <div class="col-md-6 selectContainer">
-          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-            <select name="state" class="form-control selectpicker" >
-              <option value=" " >Please select your state</option>
-              <option>Alabama</option>
-              <option>Alaska</option>
-              <option >Arizona</option>
-              <option >Arkansas</option>
-              <option >California</option>
-              <option >Colorado</option>
-              <option >Connecticut</option>
-              <option >Delaware</option>
-              <option >District of Columbia</option>
-              <option> Florida</option>
-              <option >Georgia</option>
-              <option >Hawaii</option>
-              <option >daho</option>
-              <option >Illinois</option>
-              <option >Indiana</option>
-              <option >Iowa</option>
-              <option> Kansas</option>
-              <option >Kentucky</option>
-              <option >Louisiana</option>
-              <option>Maine</option>
-              <option >Maryland</option>
-              <option> Mass</option>
-              <option >Michigan</option>
-              <option >Minnesota</option>
-              <option>Mississippi</option>
-              <option>Missouri</option>
-              <option>Montana</option>
-              <option>Nebraska</option>
-              <option>Nevada</option>
-              <option>New Hampshire</option>
-              <option>New Jersey</option>
-              <option>New Mexico</option>
-              <option>New York</option>
-              <option>North Carolina</option>
-              <option>North Dakota</option>
-              <option>Ohio</option>
-              <option>Oklahoma</option>
-              <option>Oregon</option>
-              <option>Pennsylvania</option>
-              <option>Rhode Island</option>
-              <option>South Carolina</option>
-              <option>South Dakota</option>
-              <option>Tennessee</option>
-              <option>Texas</option>
-              <option> Uttah</option>
-              <option>Vermont</option>
-              <option>Virginia</option>
-              <option >Washington</option>
-              <option >West Virginia</option>
-              <option>Wisconsin</option>
-              <option >Wyoming</option>
-            </select>
+          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+           <input type="text" name="state" placeholder="State" class="form-control" >
           </div>
         </div>
       </div>
+
+      <!-- COUNTRY SELECTION -->
+
+      <div class="form-group">
+              <label class="col-md-4 control-label">Country</label>
+              <div class="col-md-6 selectContainer">
+                <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                  <select name="country" class="form-control selectpicker" >
+                    <option value=" " >Please select your Country</option>
+                    <option>Afghanistan</option>
+                    <option>Albenia</option>
+                    <option >Argentina</option>
+                    <option >Australia</option>
+                    <option >Austria</option>
+                    <option >Bangladesh</option>
+                    <option >Bahrein</option>
+                    <option >Barbados</option>
+                    <option >Brasil</option>
+                    <option> Bhutan</option>
+                    <option >Bolivia</option>
+                    <option >Combodia</option>
+                    <option >Canada</option>
+                    <option >Central Africa Republic</option>
+                    <option >Chad</option>
+                    <option >Croatia</option>
+                    <option> Denmark</option>
+                    <option >Dominica</option>
+                    <option >Ecuador</option>
+                    <option>Egypt</option>
+                    <option >Estonia</option>
+                    <option>Fiji</option>
+                    <option >Finland</option>
+                    <option >France</option>
+                    <option>Gabon</option>
+                    <option>Georgia</option>
+                    <option>Germany</option>
+                    <option>Granada</option>
+                    <option>Haiti</option>
+                    <option>Honduras</option>
+                    <option>Iceland</option>
+                    <option>India</option>
+                    <option>Indonesia</option>
+                    <option>Iraq</option>
+                    <option>Iran</option>
+                    <option>Israel</option>
+                    <option>Jamaica</option>
+                    <option>Japan</option>
+                    <option>Jordan</option>
+                    <option>Kenya</option>
+                    <option>Keribati</option>
+                    <option>Kosovo</option>
+                    <option>Kuwait</option>
+                    <option>Laos</option>
+                    <option>Latvia</option>
+                    <option>Malaysia</option>
+                    <option>Malta</option>
+                    <option >Mexico</option>
+                    <option >Namibia</option>
+                    <option >Netherlands</option>
+                    <option >New Zealand</option>
+                    <option >Nigeria</option>
+                    <option >Norway</option>
+                    <option >Oman</option>
+                    <option >Pakistan</option>
+                    <option >Panama</option>
+                    <option >Peru</option>
+                    <option >Poland</option>
+                    <option >Portugal</option>
+                    <option >Qatar</option>
+                    <option >Romania</option>
+                    <option >Russia</option>
+                    <option >Saint Lucia</option>
+                    <option >Saudi Arabia</option>
+                    <option >Serbia</option>
+                    <option >Singapore</option>
+                    <option >Spain</option>
+                    <option >Sri-Lanka</option>
+                    <option >Sudan</option>
+                    <option >Sweden</option>
+                    <option >Taiwan</option>
+                    <option >Turkey</option>
+                    <option >Uganda</option>
+                    <option >Uruguay</option>
+                    <option >Venezuela</option>
+                    <option >Vietnam</option>
+                    <option >Yemen</option>
+                    <option >Zambia</option>
+                    <option >Zimbabwe</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+
+
       
-      <!-- Text input-->
+      <!-- ZIP CODE SELECTION-->
       
       <div class="form-group">
         <label class="col-md-4 control-label">Zip Code</label>
@@ -201,14 +259,14 @@ and is wrapped around the whole page content, except for the footer in this exam
       
         <!-- Text area -->
       
-      <div class="form-group">
+      <!--<div class="form-group">
         <label class="col-md-4 control-label">About </label>
         <div class="col-md-6  inputGroupContainer">
           <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
             <textarea class="form-control" name="comment" placeholder="About "></textarea>
           </div>
         </div>
-      </div>
+      </div> -->
       
      
        </fieldset>
