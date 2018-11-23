@@ -1,5 +1,4 @@
 <?php
-
 $first_name = $_POST['first_name'];
 $last_name = $_POST['last_name'];
 $gender = $_POST['gender'];
@@ -12,62 +11,72 @@ $zip = $_POST['zip'];
 $email = $_POST['email'];
 $password = $_POST['password'];
 
-if(!empty($first_name) || !empty($last_name) || !empty(gender) || !empty(phone) || !empty(address) || !empty(city) || !empty(state) || !empty(country) || !empty(zip) || !empty(email) || !empty(password))
+if(!empty($first_name) || !empty($last_name) || !empty($gender) || !empty($phone) || !empty($address) || !empty($city) || !empty($state) || !empty($country) || !empty($zip) || !empty($email) || !empty($password))
 {
-     
-     $host = "localhost";
-     $dbUsername = "root";
-     $dbPassword = "";
-     $dbname = "customer_info";
+    $host = "localhost";
+    $dbUsername = "root";
+    $dbPassword = "";
+    $dbname = "exact";
 
-     //create connection
-     $conn = new mysqli($host, $dbUsername, $dbPassword, $dbname);
-     if(mysqli_connect_error())
-     {
-     	die('Connect Error('.mysqli_connect_error().')'.mysqli_connect_error());
-     }
 
-     else
-     {
-     	$SELECT = "SELECT email From sign_up where email = ? Limit 1";
-     	$INSERT = "INSERT Into sign_up (first_name, last_name, gender, phone, address, city, state, country, zip, email, password) values(?, ?, ?, ?, ?, ?, ?, ?
-     		, ?, ?, ?)";
+    $conn = new mysqli($host, $dbUsername, $dbPassword, $dbname); 
 
-        //Prepare Statement
-       
-       $stmt = $conn -> prepare($SELECT);
-       $stmt->bind_param("s", $email);
-       $stmt->execute();
-       $stmt->bind_result($email);
-       $stmt->store_result();
-       $rnum = $stmt->num_rows;
+    if(mysqli_connect_error())
+    {
+    	die('Connect Error('. mysqli_connect_errno(). ')' . mysqli_connect_error());
+    }
 
-       if($rnum ==0)
-       {
-       	$stmt->close();
-       	$stmt = $conn->prepare($INSERT);
-       	$stmt->bind_param("sssissssiss", $first_name, $last_name, $gender, $phone, $address, $city, $state, $country, $zip, $email, $password);
-       	$stmt->execute();
-       	echo "New record inserted successfully";
+    else
+    {
+    	$SELECT = "SELECT email from user_info where email = ? Limit 1";
+    	$INSERT = "INSERT into user_info (first_name, last_name, gender, phone, address, city, state, country, zip, email, password) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-       }
-       else
-       {
-            echo "Someone already registered using this email";
+    	$stmt = $conn->prepare($SELECT);
+    	$stmt->bind_param("s", $email);
+    	$stmt->execute();
+    	$stmt->bind_result($email);
+    	$stmt->store_result();
+    	$rnum = $stmt->num_rows;
 
-       }
-       $stmt->close();
-       $conn->close();
-        
-     }
+    	if($rnum == 0)
+    	{
+    		$stmt->close();
+    		$stmt = $conn->prepare($INSERT);
+    		$stmt->bind_param("sssissssiss", $first_name, $last_name, $gender, $phone, $address, $city, $state, $country, $zip, $email, $password);
+    		$stmt-> execute();
+    		
+    		header('Location: login.html');
+    		//echo "New Record inserted successfully";
 
+    	}
+
+    	else
+    	{
+    		echo "Somebody already registered using this email";
+    	}
+    	$stmt->close();
+    	$conn->close(); 
+
+
+
+
+    }
 
 }
+
 else
 {
 	echo "All fields are required";
 	die();
 }
+
+
+
+
+
+
+
+
 
 
 ?>
