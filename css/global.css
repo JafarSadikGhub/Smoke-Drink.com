@@ -1,0 +1,16 @@
+*{color: #ffff;}
+.bg{background: url('../images/noff.jpg') no-repeat; width: 100%; height: 100vh;}
+.form-container{border: 1px solid #fff; padding:50px 60px; margin-top: 20vh;
+-webkit-box-shadow: 1px 3px 26px 31px rgba(133,130,133,1);
+-moz-box-shadow: 1px 3px 26px 31px rgba(133,130,133,1);
+box-shadow: 1px 3px 26px 31px rgba(133,130,133,1);
+
+}
+
+.bgs{background: url('../images/zippo.jpg') no-repeat; width: 100%; height: 100vh;}
+
+.form-containers{border: 1px solid #fff; padding:50px 60px; margin-top: 20vh;
+-webkit-box-shadow: -6px -2px 79px 0px rgba(255,250,255,1);
+-moz-box-shadow: -6px -2px 79px 0px rgba(255,250,255,1);
+box-shadow: -6px -2px 79px 0px rgba(255,250,255,1);
+}
