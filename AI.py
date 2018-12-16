@@ -6,6 +6,57 @@ import pytesseract
 from datetime import datetime, date
 import os
 
+def apply_threshold(img, argument):
+    switcher = {
+        1: cv2.threshold(cv2.GaussianBlur(img, (9, 9), 0), 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1],
+        2: cv2.threshold(cv2.GaussianBlur(img, (7, 7), 0), 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1],
+        3: cv2.threshold(cv2.GaussianBlur(img, (5, 5), 0), 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1],
+        4: cv2.threshold(cv2.medianBlur(img, 5), 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1],
+        5: cv2.threshold(cv2.medianBlur(img, 3), 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1],
+        6: cv2.adaptiveThreshold(cv2.GaussianBlur(img, (5, 5), 0), 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
+                                 cv2.THRESH_BINARY, 31, 2),
+        7: cv2.adaptiveThreshold(cv2.medianBlur(img, 3), 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 31, 2),
+    }
+    return switcher.get(argument, "Invalid method")
+
+
+def get_birthdate_string(img):
+    # Get image height and width channels
+    height, width, channels = img.shape
+
+    # Crop the lower part of the NID image
+    img = img[int(height/2):height, 0:width]
+
+     # Convert to gray
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    cv2.imwrite('gray.jpg', img)
+
+    # Apply dilation and erosion to remove some noise
+    kernel = np.ones((1, 1), np.uint8)
+    img = cv2.dilate(img, kernel, iterations=1)
+    img = cv2.erode(img, kernel, iterations=1)
+
+    i = 1;
+    while i < 8:
+        #  Apply threshold to get image with only black and white
+        img1 = apply_threshold(img, i)
+        i += 1
+
+        # Recognize text with tesseract for python
+        prediction = pytesseract.image_to_string(img1, lang="eng")
+
+        # sending value to find_match function to get the date of birth as string (removing extra spaces and converting
+        # all character to small)
+        full_date = find_match(prediction.strip().lower())
+
+        # # verifying if OCR is reading it correctly or not
+        months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"]
+        for idx, m in enumerate(months):
+            if m in full_date:
+                return full_date
+
+    return 'no'
+
     
     ef find_match(result):
     keywords = ["date", "birth", "of","jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"]
