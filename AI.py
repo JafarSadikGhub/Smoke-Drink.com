@@ -5,7 +5,25 @@ import cv2
 import pytesseract
 from datetime import datetime, date
 import os
-SyntaxError: multiple statements found while compiling a single statement
+
+    
+    ef find_match(result):
+    keywords = ["date", "birth", "of","jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"]
+
+    for key in keywords:
+        if key in result and key == "birth":
+            index = result.index(key)
+            return result[index + 6: index + 17]
+        elif key in result and key == "of":
+            index = result.index(key)
+            return result[index + 9:index + 20]
+        elif key in result and key == "date":
+            index = result.index(key)
+            return result[index + 14:index + 25]
+        else:
+            index = result.index(key)
+            return result[index - 3: index + 8]
+    
 >>> if __name__ == '__main__':
 
     image = ''
