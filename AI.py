@@ -74,6 +74,19 @@ def get_birthdate_string(img):
         else:
             index = result.index(key)
             return result[index - 3: index + 8]
+        
+        def calculate_age(born):
+    today = date.today()
+    return today.year - born.year - ((today.month, today.day) < (born.month, born.day))
+
+
+def is21plus(age):
+    if age >= 21:
+        print('Yes, age is 21+')
+    else:
+        print('No, age is under 21')
+
+
     
 >>> if __name__ == '__main__':
 
