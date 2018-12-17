@@ -25,22 +25,22 @@ if( !empty($username) || !empty($first_name) || !empty($last_name) || !empty($ge
 
     if(mysqli_connect_error())
     {
-        die('Connect Error('. mysqli_connect_errno(). ')' . mysqli_connect_error());
+    	die('Connect Error('. mysqli_connect_errno(). ')' . mysqli_connect_error());
     }
 
     else
     {
-        //$SELECT = "SELECT email from user_info where email = ? Limit 1";
+    	//$SELECT = "SELECT email from user_info where email = ? Limit 1";
         $SELECT= "SELECT username from user_info where username = ? Limit 1";
         $password = password_hash($password, PASSWORD_DEFAULT); 
-        $INSERT = "INSERT into user_info (username, first_name, last_name, gender, phone, address, city, state, country, zip, email, password) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    	$INSERT = "INSERT into user_info (username, first_name, last_name, gender, phone, address, city, state, country, zip, email, password) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-        /*$stmt = $conn->prepare($SELECT);
-        $stmt->bind_param("s", $email);
-        $stmt->execute();
-        $stmt->bind_result($email);
-        $stmt->store_result();
-        $rnum = $stmt->num_rows;*/
+    	/*$stmt = $conn->prepare($SELECT);
+    	$stmt->bind_param("s", $email);
+    	$stmt->execute();
+    	$stmt->bind_result($email);
+    	$stmt->store_result();
+    	$rnum = $stmt->num_rows;*/
 
         $stmt = $conn->prepare($SELECT);
         $stmt->bind_param("s", $username);
@@ -49,26 +49,26 @@ if( !empty($username) || !empty($first_name) || !empty($last_name) || !empty($ge
         $stmt->store_result();
         $rnum = $stmt->num_rows;
 
-        if($rnum == 0)
-        {
-            $stmt->close();
-            $stmt = $conn->prepare($INSERT);
-            $stmt->bind_param("ssssissssiss", $username, $first_name, $last_name, $gender, $phone, $address, $city, $state, $country, $zip, $email, $password);
-            
+    	if($rnum == 0)
+    	{
+    		$stmt->close();
+    		$stmt = $conn->prepare($INSERT);
+    		$stmt->bind_param("ssssissssiss", $username, $first_name, $last_name, $gender, $phone, $address, $city, $state, $country, $zip, $email, $password);
+    		
            // $param_username = $username;
             
-            $stmt-> execute();
-            header('Location: index.html');
-            //echo "New Record inserted successfully";
+    		$stmt-> execute();
+    		header('Location: login.html');
+    		//echo "New Record inserted successfully";
 
-        }
+    	}
 
-        else
-        {
-            echo "Somebody already registered using this username. Please try a new username";
-        }
-        $stmt->close();
-        $conn->close(); 
+    	else
+    	{
+    		echo "Somebody already registered using this username. Please try a new username";
+    	}
+    	$stmt->close();
+    	$conn->close(); 
 
 
 
@@ -79,8 +79,8 @@ if( !empty($username) || !empty($first_name) || !empty($last_name) || !empty($ge
 
 else
 {
-    echo "All fields are required";
-    die();
+	echo "All fields are required";
+	die();
 }
 
 
